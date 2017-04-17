@@ -1,0 +1,219 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <meta name="viewport" content="width=320,user-scalable=0,initial-scale=1.0,maximum-scale=1.0, minimum-scale=1.0" />
+    <title>盒子</title>
+    <style media="screen" >
+        html , body {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        /*立方体盒子*/
+        .boxWarp{
+            perspective: 600px;
+            padding: 120px;
+            transform-style: preserve-3d;
+            transform: rotateX(-40deg) rotateY(32deg);
+        }
+        .classDiv{
+            height: 100px;
+            width: 100px;
+            position: absolute;
+            border: #000 1px solid;
+            text-align: center;
+            line-height: 100px;
+        }
+        .classTop{
+            background: RGBA(255, 192, 203, 0.5);
+            transform: translateY(-50px) rotateX(90deg);
+        }
+        .classLeft{
+            background: RGBA(247, 173, 83, 0.5);
+            transform: translateX(-50px) rotateY(-90deg);
+        }
+        .classRight{
+            background: RGBA(168, 210, 238, 0.5);
+            transform: translateX(50px) rotateY(90deg);
+        }
+        .classBottom{
+            background: RGBA(199, 229, 221, 0.5);
+            transform: translateY(50px) rotateX(90deg);
+        }
+        .classBefore{
+            background: RGBA(242, 224, 158, 0.5);
+            transform: translateZ(50px);
+        }
+        .classAfter{
+            background: RGBA(245, 200, 249, 0.5);
+            transform: translateZ(-50px);
+        }
+
+        /*翻转的动画*/
+        .fanzhuan{
+            width: 300px;
+            height: 300px;
+            margin: 100px auto;
+            position: relative;
+        }
+        .beforeF{
+            border-radius: 50%;
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: RGBA(255, 192, 203, 1);
+            transform: rotateY(0deg) ;
+        }
+        .afterF{
+            border-radius: 50%;
+            position: absolute;
+            background: RGBA(255, 192, 203, 1);
+            /*background: RGBA(168, 210, 238, 1);*/
+            width: 300px;
+            height: 300px;
+            transform: rotateY(90deg);
+        }
+        .beforeF span , .afterF span{
+            display: inline-block;
+            width: 20px;
+            float: left;
+            margin: 50px 4px;
+        }
+        .beforeF span.first , .afterF span.first{
+            margin-left: 40px;
+        }
+        .fanzhuan:hover .beforeF{
+            transform: rotateY(90deg) ;
+            transition: all  2s ease-in;
+        }
+        .fanzhuan:hover .afterF{
+            transform: rotateY(0deg) ;
+            transition: all 2s ease-in;
+            transition-delay:2s;
+        }
+
+        /*理解animation-direction（动画的播放方向）:normal，alternate和alternate-reverse*/
+        .myDiv1 {
+            width: 75px;
+            height: 75px;
+            background-color: red;
+            position:relative;
+            animation:aDirection 5s infinite;
+        }
+        @keyframes aDirection {
+            from {left:0px;}
+            to {left:200px;}
+        }
+        .alter { animation-direction:alternate; }
+        .alterR { animation-direction:alternate-reverse; }
+
+
+        /*闪烁文字*/
+        @keyframes blink {
+            to { color: transparent }
+        }
+        .blink {
+            animation: .6s blink 6;
+            animation-direction: alternate;
+            color:green;
+            box-shadow: #green 0px 0px 4px;
+        }
+
+        #canvas{
+            width: 100%;
+            height: 60%;
+            background: RGBA(199, 229, 221, 1.00);
+            border: RGBA(96, 145, 178, 1.00) solid 1px;
+            box-sizing: border-box;
+            -weblit-box-sizing: border-box;
+        }
+    </style>
+    <script  type="text/javascript">
+
+        window.onload=function(){
+
+            var canvas = document.getElementById('canvas');
+            var context = canvas.getContext('2d');
+            context.font="38px Arial";
+            context.fillStyle="cornflowerblue";
+            context.strokeStyle="blue";
+            context.fillText('Hello Canvas',canvas.width/2-150,canvas.height/2+15);
+            context.strokeText('Hello Canvas',canvas.width/2-150,canvas.height/2+15);
+
+
+
+        }
+
+    </script>
+</head>
+<body>
+
+    <canvas id="canvas" ></canvas>
+
+    <!-- 立方体盒子 -->
+    <!-- <div class="boxWarp">
+        <div class="classDiv classTop">
+            上
+        </div>
+        <div class="classDiv classLeft">
+            左
+        </div>
+        <div class="classDiv classRight">
+            右
+        </div>
+        <div class="classDiv classBottom">
+            下
+        </div>
+        <div class="classDiv classBefore">
+            前
+        </div>
+        <div class="classDiv classAfter">
+            后
+        </div>
+    </div> -->
+
+    <!-- 翻转的动画 -->
+    <!-- <div class="fanzhuan">
+        <div class="afterF">
+            <span class="first">春花秋月何时了</span>
+            <span>往事知多少</span>
+            <span>小楼昨夜又春风</span>
+            <span>故国不堪回首月明中</span>
+            <span>雕阑玉砌应犹在</span>
+            <span>只是朱颜改</span>
+            <span>问君能有几多愁</span>
+            <span>恰是一江春水向东流</span>
+        </div>
+        <div class="beforeF">
+            <span class="first">春花秋月何时了</span>
+            <span>往事知多少</span>
+            <span>小楼昨夜又春风</span>
+            <span>故国不堪回首月明中</span>
+            <span>雕阑玉砌应犹在</span>
+            <span>只是朱颜改</span>
+            <span>问君能有几多愁</span>
+            <span>恰是一江春水向东流</span>
+        </div>
+    </div> -->
+
+
+    <!-- 理解animation-direction（动画的播放方向）:normal，alternate和alternate-reverse -->
+    <!-- <div class="myDiv1">normal</div>
+    <div class="myDiv1 alter">alternate</div>
+    <div class="myDiv1 alterR">alternate-reverse</div> -->
+
+    <!-- 闪烁文字 -->
+    <!-- <div class="blink">
+        hello word
+    </div> -->
+
+
+
+</body>
+
+</html>
