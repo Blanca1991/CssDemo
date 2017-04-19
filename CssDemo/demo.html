@@ -124,36 +124,215 @@
             box-shadow: #green 0px 0px 4px;
         }
 
-        #canvas{
+        /*场景*/
+        .warpDiv{
             width: 100%;
-            height: 60%;
-            background: RGBA(199, 229, 221, 1.00);
-            border: RGBA(96, 145, 178, 1.00) solid 1px;
-            box-sizing: border-box;
-            -weblit-box-sizing: border-box;
+            height: 100%;
+            /*background: -webkit-gradient(linear, 0 0, 0 bottom, from(#ff0000), to(rgba(0, 0, 255, 0.5)));  */
+            background-image:radial-gradient(#14384E 0%,RGBA(20, 56, 78, 1) 30%,#031E30);
         }
+
+        @keyframes move {
+            from {left:9999px;}
+        }
+
+        .warpDiv .cloud{
+            width: 20%;
+            height: 10%;
+            border-radius: 50%;
+            position: absolute;
+            left: 0;
+            top: -5%;
+            box-shadow: rgba(000,000,000,0.8) 2px 2px 10px ;
+            z-index: 2;
+            background-image: -webkit-linear-gradient( RGBA(19, 122, 155, 1.00),RGBA(20, 80, 110, 1.00), RGBA(19, 122, 155, 1.00) );
+            animation: 2s move ;
+            animation-direction: normal;
+        }
+        .warpDiv .cloud:nth-child(2){
+            width: 30%;
+            height: 20%;
+            top: -10%;
+            border-radius: 50%;
+            left: 18%;
+            z-index: 2;
+            box-shadow:rgba(000,000,000,0.8) 5px 5px 10px;
+            animation: 2.3s move ;
+            animation-direction: normal;
+        }
+        .warpDiv .cloud:nth-child(3){
+            width: 15%;
+            height: 10%;
+            top: -2%;
+            border-radius: 50%;
+            left: 12%;
+            box-shadow: rgba(000,000,000,0.8) 5px 5px 10px;
+            z-index: 1;
+            animation: 2.8s move ;
+            animation-direction: normal;
+        }
+        .warpDiv .cloud:nth-child(4){
+            width: 15%;
+            height: 10%;
+            top: -5%;
+            border-radius: 50%;
+            left: 44%;
+            box-shadow: rgba(000,000,000,0.8) 10px 5px 10px;
+            z-index: 2;
+            animation: 3.2s move ;
+            animation-direction: normal;
+        }
+        .warpDiv .cloud:nth-child(5){
+            width: 22%;
+            height: 16%;
+            top: -8%;
+            border-radius: 50%;
+            left: 57%;
+            box-shadow: rgba(000,000,000,0.8)  4px 5px 10px;
+            z-index: 2;
+            animation: 3.8s move ;
+            animation-direction: normal;
+        }
+        .warpDiv .cloud:nth-child(6){
+            width: 27%;
+            height: 20%;
+            top: -10%;
+            border-radius: 50%;
+            left: 88%;
+            box-shadow: rgba(000,000,000,0.8) 5px 5px 10px;
+            animation: 5s move ;
+            animation-direction: normal;
+        }
+        .warpDiv .cloud:nth-child(7){
+            width: 13%;
+            height: 11%;
+            top: -7%;
+            border-radius: 50%;
+            left: 77%;
+            box-shadow: rgba(000,000,000,0.8) 2px 2px 5px;
+            z-index: 2;
+            animation: 4.4s move ;
+            animation-direction: normal;
+        }
+
+        .starDiv{
+            position: absolute;
+            top: 14rem;
+        }
+        .star{
+
+        }
+        .star01{
+            height: 100px;
+            width: 100px;
+            background: RGBA(241, 187, 122, 1.00);
+        }
+        .triangle{
+            position: absolute;
+            border: RGBA(255, 192, 203, 1.00) solid 1px ;
+        }
+        .triangle01{
+            height: 100px;
+            width: 100px;
+            background: RGBA(241, 187, 122, 1.00);
+            transform: rotateZ() rotateY() ;
+
+        }
+        .triangle02{
+            height: 100px;
+            width: 100px;
+            background: RGBA(241, 187, 122, 1.00);
+        }
+        .triangle03{
+            height: 100px;
+            width: 100px;
+            background: RGBA(241, 187, 122, 1.00);
+        }
+        .triangle04{
+            height: 100px;
+            width: 100px;
+            background: RGBA(241, 187, 122, 1.00);
+        }
+        .triangle05{
+            height: 100px;
+            width: 100px;
+            background: RGBA(241, 187, 122, 1.00);
+        }
+        .triangle06{
+            height: 100px;
+            width: 100px;
+            background: RGBA(241, 187, 122, 1.00);
+        }
+
+
+
+        .floatCloud{
+            position: absolute;
+            top: 35%;
+            width: 100%;
+            height: 20%;
+            background: #fff;
+        }
+        .floatCloud .Cloud{
+            width: 6rem;
+            height: 6rem;
+            background: RGBA(98, 180, 202, 1.00);
+            border-radius: 50%;
+            position: absolute;
+
+        }
+        .floatCloud .Cloud:nth-child(1){
+            top: 1rem;
+        }
+        .floatCloud .Cloud:nth-child(2){
+            width: 6rem;
+            height: 6rem;
+            background: RGBA(98, 180, 202, 1.00);
+            border-radius: 50%;
+            left: 4rem;
+        }
+
+
     </style>
     <script  type="text/javascript">
-
-        window.onload=function(){
-
-            var canvas = document.getElementById('canvas');
-            var context = canvas.getContext('2d');
-            context.font="38px Arial";
-            context.fillStyle="cornflowerblue";
-            context.strokeStyle="blue";
-            context.fillText('Hello Canvas',canvas.width/2-150,canvas.height/2+15);
-            context.strokeText('Hello Canvas',canvas.width/2-150,canvas.height/2+15);
-
-
-
-        }
-
+        // window.onload=function(){
+        //     var cloudArr=document.getElementsByClassName('cloud')
+        //     console.log(cloudArr);
+        // }
     </script>
 </head>
 <body>
 
-    <canvas id="canvas" ></canvas>
+    <!-- 场景 -->
+    <div class="warpDiv">
+        <div class="cloudDiv">
+            <div class="cloud"></div>
+            <div class="cloud"></div>
+            <div class="cloud"></div>
+            <div class="cloud"></div>
+            <div class="cloud"></div>
+            <div class="cloud"></div>
+            <div class="cloud"></div>
+        </div>
+        <!-- <div class="floatCloud">
+            <div class="Cloud"></div>
+            <div class="Cloud"></div>
+            <div class="Cloud"></div>
+            <div class="Cloud"></div>
+            <div class="Cloud"></div>
+        </div> -->
+        <div class="starDiv">
+            <div class="star01">
+                <div class="triangle triangle01"></div>
+                <div class="triangle triangle02"></div>
+                <div class="triangle triangle03"></div>
+                <div class="triangle triangle04"></div>
+                <div class="triangle triangle05"></div>
+                <div class="triangle triangle06"></div>
+            </div>
+        </div>
+    </div>
+
 
     <!-- 立方体盒子 -->
     <!-- <div class="boxWarp">
