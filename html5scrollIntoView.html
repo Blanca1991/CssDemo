@@ -1,0 +1,44 @@
+<html>  
+    <head>  
+        <title>HTML5_ScrollInToView方法</title>  
+        <meta  charset="utf-8">  
+        <script type="text/javascript">  
+            window.onload = function(){  
+                document.querySelector("#roll1").onclick = function(){  
+                    document.querySelector("#roll_top").scrollIntoView(false);  
+                }  
+                document.querySelector("#roll2").onclick = function(){  
+                    document.querySelector("#roll_top").scrollIntoView(true);  
+                }  
+            }  
+        </script>   
+        <style type="text/css">  
+            #myDiv{  
+                height:900px;  
+                background-color:pink;                
+            }  
+            #roll_top{  
+                height:900px;  
+                background-color:#4EA0D5;  
+                color:#FFF;  
+                font-size:50px;  
+                position:relative;  
+            }  
+            #bottom{  
+                position:absolute;  
+                display:block;  
+                left;0;bottom:0;  
+            }  
+        </style>  
+    </head>  
+    <body>  
+        <button id="roll1">scrollIntoView(false)</button>  
+        <button id="roll2">scrollIntoView(true)</button>  
+        <div id="myDiv"></div>  
+        <div id="roll_top">  
+            scrollIntoView(ture)元素上边框与视窗顶部齐平  
+            <div>若要使用平滑滚动 添加样式scroll-behavior: smooth 在html 或者body上 避免僵硬的跳转</div>
+            <span id="bottom">scrollIntoView(false)元素下边框与视窗底部齐平</span>  
+        </div>   
+    </body>  
+</html>
